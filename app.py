@@ -32,10 +32,11 @@ except Exception as e:
 app = Flask(__name__)
 app.secret_key = 'your_secret_key_here'  # Change this for production
 
-# ==============================================================================
-# DATABASE CONFIGURATION & SEAMLESS CLOUD / LOCAL FALLBACK ENGINE
-# ==============================================================================
-SQLITE_DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'latte_lounge_caffe.db')
+# In serverless cloud environments (like Vercel), use /tmp for writeable SQLite database
+if os.environ.get("VERCEL"):
+    SQLITE_DB_PATH = "/tmp/latte_lounge_caffe.db"
+else:
+    SQLITE_DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'latte_lounge_caffe.db')
 
 def seed_sqlite_database():
     """Seeds SQLite database automatically if tables do not exist, ensuring zero-configuration cloud deployment."""

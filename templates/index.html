@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latte Lounge Café - Mindful Drinks & Artisan Coffee</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="cafe-body">
+
+    <!-- Main Canvas Wrapper -->
+    <div class="landing-canvas">
+        
+        <!-- Navigation Header -->
+        <header class="navbar" id="top-navbar">
+            <div class="nav-left">
+                <a href="#" class="brand-link">
+                    <div class="brand-badge-circle">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                            <line x1="6" y1="1" x2="6" y2="4"></line>
+                            <line x1="10" y1="1" x2="10" y2="4"></line>
+                            <line x1="14" y1="1" x2="14" y2="4"></line>
+                        </svg>
+                    </div>
+                    <span class="brand-name">Drinko <span class="brand-sub">LATTE LOUNGE</span></span>
+                </a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#hero" class="nav-item">Home</a>
+                <a href="#menu-section" class="nav-item active" id="nav-menu">Menu</a>
+                <a href="/bakery" class="nav-item" id="nav-bakery">Bakery</a>
+                <a href="#rewards" class="nav-item" id="nav-rewards">Rewards</a>
+                <a href="#promo-section" class="nav-item">Specials</a>
+                <a href="#delivery" class="nav-item" id="nav-delivery">Delivery</a>
+            </nav>
+
+            <div class="nav-right">
+                <div class="search-pill">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="site-search" placeholder="Search drinks...">
+                </div>
+                
+                <button class="nav-icon-btn" id="fav-btn" title="Saved Favorites" aria-label="Favorites">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
+
+                <button class="cart-btn" id="open-cart-btn" title="View Order Basket" aria-label="Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-badge" id="cart-counter">0</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Section: Starbucks Concept -->
+        <section class="hero-section" id="hero">
+            <!-- Left Column: Typography, Description & Action -->
+            <div class="hero-left">
+                <span class="hero-tag">Handcrafted Everyday</span>
+                <h1 class="hero-title">Mindful Drinks<br><span class="highlight-title">for Calm</span></h1>
+                <p class="hero-desc">
+                    A lower-calorie version of the classic latte. Espresso and lactose-free milk come together in perfect harmony to bring lightness to your drink.
+                </p>
+                <div class="hero-action-group">
+                    <div class="hero-price">LKR 340.00</div>
+                    <button class="buy-now-btn" id="hero-order-btn" title="Order Skinny Latte" data-drink="Skinny Latte" data-price="340.00">
+                        <span>Buy Now</span>
+                        <div class="btn-arrow-circle">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Center Column: Floating Cup, Circle Backdrop & Coffee Beans -->
+            <div class="hero-center">
+                <div class="circular-backdrop">
+                    <div class="ring-overlay ring-1"></div>
+                    <div class="ring-overlay ring-2"></div>
+                </div>
+
+                <div class="cup-float-wrapper">
+                    <img src="{{ url_for('static', filename='images/hero_cup.png') }}" alt="Artisan Skinny Iced Latte" class="floating-cup-img">
+                </div>
+
+                <!-- Floating Decorative Roasted Coffee Beans -->
+                <div class="floating-bean bean-left">
+                    <img src="{{ url_for('static', filename='images/coffee_beans.png') }}" alt="Coffee Bean">
+                </div>
+                <div class="floating-bean bean-right">
+                    <img src="{{ url_for('static', filename='images/coffee_beans.png') }}" alt="Coffee Bean">
+                </div>
+                <div class="floating-bean bean-top-right">
+                    <img src="{{ url_for('static', filename='images/coffee_beans.png') }}" alt="Coffee Bean">
+                </div>
+
+                <!-- Holiday Gift Guide Floating Card -->
+                <div class="gift-guide-card">
+                    <h4 class="guide-title">HOLIDAY GIFT GUIDE</h4>
+                    <p class="guide-desc">Give the gift of coffee this season! Explore curated blends & artisan beans for the coffee enthusiast.</p>
+                </div>
+            </div>
+
+            <!-- Right Column: 3 Feature Items -->
+            <div class="hero-right">
+                <div class="feature-item">
+                    <div class="feature-icon-circle icon-pink">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                        </svg>
+                    </div>
+                    <div class="feature-text">
+                        <h4>Sugar free</h4>
+                        <p>Now without added sugar</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-circle icon-gold">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <div class="feature-text">
+                        <h4>100% Premium</h4>
+                        <p>Crafted using 100% premium Arabica single-origin beans</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon-circle icon-green">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <div class="feature-text">
+                        <h4>Chilled Classics</h4>
+                        <p>Complements the signature Latte Lounge cold-brew collection</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Featured Drinks Carousel Dock -->
+        <section class="bottom-dock">
+            <button class="dock-arrow arrow-left" id="carousel-prev" aria-label="Previous Drinks">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <div class="dock-cards-wrapper" id="dock-carousel">
+                <!-- Card 1: Unicorn Frappuccino -->
+                <div class="dock-card" data-drink="Unicorn Frappuccino">
+                    <div class="drink-circle-badge badge-pink">
+                        <img src="{{ url_for('static', filename='images/unicorn_frappe.png') }}" alt="Unicorn Frappuccino" class="dock-drink-img">
+                    </div>
+                    <h3 class="dock-drink-title">Unicorn Frappuccino</h3>
+                    <button class="dock-order-btn add-to-cart-action" data-name="Unicorn Frappuccino" data-price="580.00">Add to order +</button>
+                </div>
+
+                <!-- Card 2: Caramel Frappuccino (Featured Center) -->
+                <div class="dock-card featured-center" data-drink="Caramel Frappuccino">
+                    <div class="drink-circle-badge badge-green">
+                        <img src="{{ url_for('static', filename='images/caramel_frappe.png') }}" alt="Caramel Frappuccino" class="dock-drink-img">
+                    </div>
+                    <h3 class="dock-drink-title">Caramel Frappuccino</h3>
+                    <button class="dock-order-btn add-to-cart-action" data-name="Caramel Frappuccino" data-price="550.00">Add to order +</button>
+                </div>
+
+                <!-- Card 3: Caramel Ribbon -->
+                <div class="dock-card" data-drink="Caramel Ribbon">
+                    <div class="drink-circle-badge badge-amber">
+                        <img src="{{ url_for('static', filename='images/caramel_ribbon.png') }}" alt="Caramel Ribbon" class="dock-drink-img">
+                    </div>
+                    <h3 class="dock-drink-title">Caramel Ribbon</h3>
+                    <button class="dock-order-btn add-to-cart-action" data-name="Caramel Ribbon" data-price="550.00">Add to order +</button>
+                </div>
+            </div>
+
+            <button class="dock-arrow arrow-right" id="carousel-next" aria-label="Next Drinks">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </section>
+
+
+        <!-- ============================================================== -->
+        <!-- MENU SECTION: MATCHING THE PIN / DRINKO DESIGN SCREENSHOT -->
+        <!-- ============================================================== -->
+        <section class="menu-catalog-section" id="menu-section">
+            
+            <!-- Menu Top Header Bar -->
+            <div class="menu-section-header">
+                <div class="menu-header-left">
+                    <h2 class="menu-main-title">Menu</h2>
+                    <span class="menu-script-subtitle">drinks</span>
+                </div>
+                <div class="menu-header-right">
+                    <button class="my-basket-btn" id="basket-view-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        <span>my basket</span>
+                        <span class="basket-badge" id="menu-basket-count">0</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Pills Navigation -->
+            <div class="menu-filter-nav" id="menu-categories">
+                <button type="button" class="filter-pill active" data-category="all">Iced coffee</button>
+                <button type="button" class="filter-pill" data-category="milk">Milk-Based Coffee</button>
+                <button type="button" class="filter-pill" data-category="classic">Classic Coffee</button>
+                <button type="button" class="filter-pill" data-category="specialty">Specialty Coffee</button>
+                <button type="button" class="filter-pill" data-category="sweet">Sweet Coffee</button>
+            </div>
+
+            <!-- Menu Cards Carousel / Grid Container with side arrows -->
+            <div class="menu-grid-container">
+                <button class="menu-nav-arrow arrow-prev" id="menu-prev-btn" aria-label="Previous Menu Page">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <!-- The 8 Menu Cards Matching User Reference -->
+                <div class="menu-cards-grid" id="menu-cards-grid">
+                    
+                    <!-- Card 1: Espresso -->
+                    <div class="drink-card" data-category="classic all" data-drink="Espresso">
+                        <div class="drink-card-img-box">
+                            <img src="{{ url_for('static', filename='images/drink_espresso.png') }}" alt="Iced Espresso" class="drink-card-img" loading="lazy">
+                        </div>
+                        <div class="drink-card-body">
+                            <h3 class="drink-name">Espresso</h3>
+                            <p class="drink-ingredients">pure strong coffee</p>
+                            <div class="drink-card-footer">
+                                <span class="drink-price">LKR 570.00</span>
+                                <button class="to-cart-btn add-to-cart-action" data-name="Espresso" data-price="570.00">to cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Americano -->
+                    <div class="drink-card" data-category="classic all" data-drink="Americano">
+                        <div class="drink-card-img-box">
+                            <img src="{{ url_for('static', filename='images/drink_americano.png') }}" alt="Iced Americano" class="drink-card-img" loading="lazy">
+                        </div>
+                        <div class="drink-card-body">
+                            <h3 class="drink-name">Americano</h3>
+                            <p class="drink-ingredients">espresso + hot water</p>
+                            <div class="drink-card-footer">
+                                <span class="drink-price">LKR 450.00</span>
+                                <button class="to-cart-btn add-to-cart-action" data-name="Americano" data-price="450.00">to cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Latte -->
+                    <div class="drink-card" data-category="milk all" data-drink="Latte">
+                        <div class="drink-card-img-box">
+                            <img src="{{ url_for('static', filename='images/drink_latte.png') }}" alt="Iced Latte" class="drink-card-img" loading="lazy">
+                        </div>
+                        <div class="drink-card-body">
+                            <h3 class="drink-name">Latte</h3>
+                            <p class="drink-ingredients">espresso + lots of milk + little foam</p>
+                            <div class="drink-card-footer">
+                                <span class="drink-price">LKR 430.00</span>
+                                <button class="to-cart-btn add-to-cart-action" data-name="Latte" data-price="430.00">to cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Macchiato -->
+                    <div class="drink-card" data-category="milk sweet all" data-drink="Macchiato">
+                        <div class="drink-card-img-box">
+                            <img src="{{ url_for('static', filename='images/drink_macchiato.png') }}" alt="Iced Macchiato" class="drink-card-img" loading="lazy">
+                        </div>
+                        <div class="drink-card-body">
+                            <h3 class="drink-name">Macchiato</h3>
+                            <p class="drink-ingredients">espresso + small milk foam</p>
+                            <div class="drink-card-footer">
+                                <span class="drink-price">LKR 550.00</span>
+                                <button class="to-cart-btn add-to-cart-action" data-name="Macchiato" data-price="550.00">to cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Irish Coffee -->
+                    <div class="drink-card" data-category="specialty all" data-drink="Irish Coffee">
+                        <div class="drink-card-img-box">
+                            <img src="{{ url_for('static', filename='images/drink_irish.png') }}" alt="Irish Coffee" class="drink-card-img" loading="lazy">
+                        </div>
+                        <div class="drink-card-body">
+                            <h3 class="drink-name">Irish Coffee</h3>
+                            <p class="drink-ingredients">coffee + whiskey + cream</p>
+                            <div class="drink-card-footer">
+                                <span class="drink-price">LKR 540.00</span>
+                                <button class="to-cart-btn add-to-cart-action" data-name="Irish Coffee" data-price="540.00">to cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Flat White -->
+                    <div class="drink-card" data-category="milk all" data-drink="Flat White">
+                        <div class="drink-card-img-box">
+                            <img src="{{ url_for('static', filename='images/drink_flatwhite.png') }}" alt="Iced Flat White" class="drink-card-img" loading="lazy">
+                        </div>
+                        <div class="drink-card-body">
+                            <h3 class="drink-name">Flat White</h3>
+                            <p class="drink-ingredients">espresso + thin layer of milk foam</p>
+                            <div class="drink-card-footer">
+                                <span class="drink-price">LKR 420.00</span>
+                                <button class="to-cart-btn add-to-cart-action" data-name="Flat White" data-price="420.00">to cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: Lungo -->
+                    <div class="drink-card" data-category="classic all" data-drink="Lungo">
+                        <div class="drink-card-img-box">
+                            <img src="{{ url_for('static', filename='images/drink_lungo.png') }}" alt="Iced Lungo" class="drink-card-img" loading="lazy">
+                        </div>
+                        <div class="drink-card-body">
+                            <h3 class="drink-name">Lungo</h3>
+                            <p class="drink-ingredients">long espresso, more water</p>
+                            <div class="drink-card-footer">
+                                <span class="drink-price">LKR 480.00</span>
+                                <button class="to-cart-btn add-to-cart-action" data-name="Lungo" data-price="480.00">to cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8: Vienna Coffee -->
+                    <div class="drink-card" data-category="specialty sweet all" data-drink="Vienna Coffee">
+                        <div class="drink-card-img-box">
+                            <img src="{{ url_for('static', filename='images/drink_vienna.png') }}" alt="Vienna Coffee" class="drink-card-img" loading="lazy">
+                        </div>
+                        <div class="drink-card-body">
+                            <h3 class="drink-name">Vienna Coffee</h3>
+                            <p class="drink-ingredients">espresso + whipped cream</p>
+                            <div class="drink-card-footer">
+                                <span class="drink-price">LKR 520.00</span>
+                                <button class="to-cart-btn add-to-cart-action" data-name="Vienna Coffee" data-price="520.00">to cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="menu-nav-arrow arrow-next" id="menu-next-btn" aria-label="Next Menu Page">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- "More" Button at Bottom of Menu -->
+            <div class="menu-footer-action">
+                <button class="menu-more-btn" id="menu-more-btn">More</button>
+            </div>
+
+        </section>
+
+
+        <!-- ============================================================== -->
+        <!-- PROMOTIONAL SECTION: "New drink" (PASTEL PINK BANNER) -->
+        <!-- ============================================================== -->
+        <section class="promo-banner-section" id="promo-section">
+            <div class="promo-content-grid">
+                
+                <!-- Left Details & Order Callout -->
+                <div class="promo-text-column">
+                    <div class="promo-badge-row">
+                        <span class="promo-edition">New <em class="promo-script">collection</em></span>
+                    </div>
+                    <h2 class="promo-mega-title">drink</h2>
+                    <h3 class="promo-drink-title">Iced Latte</h3>
+                    <p class="promo-description">
+                        A refreshing coffee drink made with espresso, cold milk, and ice. It has a smooth, light flavor, balancing the strength of espresso with the creaminess of milk. Perfect for hot days or when you want a cool, energizing coffee without being too strong.
+                    </p>
+
+                    <!-- Feature Metrics Badges -->
+                    <div class="promo-specs-row">
+                        <div class="spec-block">
+                            <span class="spec-highlight">3</span>
+                            <span class="spec-label">Syrups</span>
+                            <small class="spec-sub">vanilla, caramel, hazelnut</small>
+                        </div>
+                        <div class="spec-block">
+                            <span class="spec-highlight">With</span>
+                            <span class="spec-label">recipe</span>
+                            <small class="spec-sub">espresso + cold milk + ice</small>
+                        </div>
+                        <div class="spec-block">
+                            <span class="spec-highlight">20%</span>
+                            <span class="spec-label">Sale</span>
+                            <small class="spec-sub">limited time offer</small>
+                        </div>
+                    </div>
+
+                    <!-- Price & CTA -->
+                    <div class="promo-cta-row">
+                        <div class="promo-pricing">
+                            <span class="current-price">LKR 650.00</span>
+                            <span class="original-price">LKR 780.00</span>
+                        </div>
+                        <button class="promo-order-btn add-to-cart-action" data-name="Iced Latte Special" data-price="650.00">
+                            Add to order +
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Visual: Tall Iced Latte with Coconut Presentation -->
+                <div class="promo-image-column">
+                    <div class="promo-visual-wrap">
+                        <div class="promo-soft-glow"></div>
+                        <img src="{{ url_for('static', filename='images/drink_macchiato.png') }}?v=2" alt="Artisan Iced Latte Special" class="promo-hero-drink">
+                        <div class="promo-floating-tag">
+                            <span>🥥 Fresh Coconut Cold Foam</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="cafe-footer">
+            <div class="footer-container">
+                <div class="footer-col brand-col">
+                    <h4 class="footer-brand">LATTE LOUNGE</h4>
+                    <p>Mindful artisanal coffee, slow-brewed daily with single-origin beans and care.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Hours</h5>
+                    <p>Monday - Friday: 6:00 AM – 10:00 PM</p>
+                    <p>Saturday - Sunday: 7:00 AM – 11:00 PM</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Location</h5>
+                    <p>452 Artisan Boulevard</p>
+                    <p>Downtown Espresso District</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Connect</h5>
+                    <p>Call: (555) 789-BREW</p>
+                    <p>hello@lattelounge.cafe</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Latte Lounge Café. Handcrafted Coffee & Artisan Pastries.</p>
+            </div>
+        </footer>
+
+    </div><!-- End of landing-canvas -->
+
+
+    <!-- ============================================== -->
+    <!-- FLOATING CHATBOT WIDGET (BOTTOM RIGHT CORNER) -->
+    <!-- ============================================== -->
+    
+    <!-- Floating Action Button (FAB) -->
+    <button class="chat-fab" id="chat-fab-toggle" aria-label="Open Chatbot Assistant" title="Chat with Latte Lounge Assistant">
+        <span class="fab-bubble-badge" id="fab-badge">1</span>
+        <span class="fab-pulse-ring"></span>
+        <svg class="fab-icon-chat" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <svg class="fab-icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
+
+    <!-- Floating Chat Widget Window -->
+    <aside class="floating-chat-container chat-widget-hidden" id="chat-widget" aria-label="Latte Lounge Assistant Window">
+        <div class="chat-header">
+            <div class="header-info">
+                <div class="header-avatar">
+                    ☕
+                    <span class="online-indicator"></span>
+                </div>
+                <div class="header-text">
+                    <h3 class="bot-title">Latte Lounge Barista</h3>
+                    <p class="bot-status">Digital Barista • Online</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <button class="widget-action-icon" id="chat-cart-shortcut" title="View Current Basket" aria-label="Basket">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </button>
+                <button class="widget-close-btn" id="chat-widget-close" aria-label="Minimize Chat Window" title="Minimize">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat messages scroll box -->
+        <div class="chat-box" id="chat-box">
+            <!-- Messages rendered dynamically -->
+        </div>
+
+        <!-- Interactive Quick Reply Suggestion Chips -->
+        <div class="quick-replies" id="quick-replies">
+            <button type="button" class="chip" data-query="View Menu">📋 View Menu</button>
+            <button type="button" class="chip" data-query="Checkout my order">🛍️ Checkout Basket</button>
+            <button type="button" class="chip" data-query="Reserve a Table">🪑 Reserve a Table</button>
+            <button type="button" class="chip" data-query="My Loyalty Points">⭐ Loyalty Points</button>
+            <button type="button" class="chip" data-query="Vegetarian Options">🥗 Veggie</button>
+            <button type="button" class="chip" data-query="Coffee & Drinks">☕ Drinks</button>
+        </div>
+
+        <!-- Input field & Send button -->
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Ask about menu, order a drink..." autocomplete="off">
+            <button id="send-btn" aria-label="Send Message">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Notification Toast Popup -->
+    <div id="notification-popup" class="notification-hidden">
+        <span class="notification-content"></span>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

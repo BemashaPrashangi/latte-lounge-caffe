@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery & Artisan Pastries - Latte Lounge Café</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="cafe-body">
+
+    <!-- Main Canvas Wrapper -->
+    <div class="landing-canvas bakery-canvas">
+        
+        <!-- Navigation Header -->
+        <header class="navbar" id="top-navbar">
+            <div class="nav-left">
+                <a href="/" class="brand-link">
+                    <div class="brand-badge-circle">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                            <line x1="6" y1="1" x2="6" y2="4"></line>
+                            <line x1="10" y1="1" x2="10" y2="4"></line>
+                            <line x1="14" y1="1" x2="14" y2="4"></line>
+                        </svg>
+                    </div>
+                    <span class="brand-name">Drinko <span class="brand-sub">LATTE LOUNGE</span></span>
+                </a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="/" class="nav-item">Home</a>
+                <a href="/#menu-section" class="nav-item" id="nav-menu">Menu</a>
+                <a href="/bakery" class="nav-item active" id="nav-bakery">Bakery</a>
+                <a href="/#rewards" class="nav-item" id="nav-rewards">Rewards</a>
+                <a href="/#promo-section" class="nav-item">Specials</a>
+                <a href="/#delivery" class="nav-item" id="nav-delivery">Delivery</a>
+            </nav>
+
+            <div class="nav-right">
+                <div class="search-pill">
+                    <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="site-search" placeholder="Search bakery & treats...">
+                </div>
+                
+                <button class="nav-icon-btn" id="fav-btn" title="Saved Favorites" aria-label="Favorites">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
+
+                <button class="cart-btn" id="open-cart-btn" title="View Order Basket" aria-label="Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="cart-badge" id="cart-counter">0</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ============================================================== -->
+        <!-- BAKERY HERO SECTION (SOFT PASTEL PINK WITH RASPBERRY CAKE) -->
+        <!-- ============================================================== -->
+        <section class="bakery-hero" id="bakery-hero">
+            <!-- Left Text Column -->
+            <div class="bakery-hero-left">
+                <span class="bakery-subtitle-pill">Artisan Patisserie</span>
+                <h1 class="bakery-hero-title">Bakery</h1>
+                <p class="bakery-hero-desc">
+                    Ooren petry odor sit amet, aoidiisscing elit, sed dieneerior uinortdot naclqulia. Handcrafted with slow-fermented organic dough, French butter, and morning-picked wild raspberries.
+                </p>
+                <div class="bakery-hero-cta">
+                    <button class="bakery-order-btn add-to-cart-action" data-name="Signature Raspberry Cake Slice" data-price="850.00" title="Order Fresh Raspberry Cake">
+                        <span>Order Now</span>
+                    </button>
+                    <div class="bakery-price-badge">
+                        <span class="badge-label">Slice from</span>
+                        <span class="badge-price">LKR 850.00</span>
+                    </div>
+                </div>
+
+                <!-- Decorative scattered fresh berries -->
+                <div class="hero-berry-cluster">
+                    <div class="floating-berry berry-1">🍓</div>
+                    <div class="floating-berry berry-2">🍓</div>
+                    <div class="floating-berry berry-3">🍓</div>
+                </div>
+            </div>
+
+            <!-- Right / Center Staged Raspberry Cake Composition -->
+            <div class="bakery-hero-right">
+                <div class="bakery-cake-composition">
+                    
+                    <!-- Whole Raspberry White Cream Cake on Ceramic Stand -->
+                    <div class="cake-display-top">
+                        <div class="cake-img-frame whole-cake-frame">
+                            <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=80" 
+                                 alt="Fresh Raspberry Vanilla Sponge Cake" 
+                                 class="whole-cake-img">
+                            <span class="cake-flavor-tag">Whole Raspberry Cake</span>
+                        </div>
+                    </div>
+
+                    <!-- Cut Cake Slice on Porcelain Plate in Foreground -->
+                    <div class="cake-display-slice">
+                        <div class="cake-img-frame slice-frame">
+                            <img src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?auto=format&fit=crop&w=700&q=80" 
+                                 alt="Slice of Layered Raspberry Cake" 
+                                 class="slice-cake-img">
+                            <div class="slice-fork-accent" title="Silver Dessert Fork">🍴</div>
+                        </div>
+                    </div>
+
+                    <!-- Scattered Raspberry Accents -->
+                    <span class="scattered-berry sb-1" aria-hidden="true"></span>
+                    <span class="scattered-berry sb-2" aria-hidden="true"></span>
+                    <span class="scattered-berry sb-3" aria-hidden="true"></span>
+                    <span class="scattered-berry sb-4" aria-hidden="true"></span>
+                </div>
+
+                <!-- Carousel Dot Indicators -->
+                <div class="bakery-carousel-dots" aria-label="Hero Carousel Navigation">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ============================================================== -->
+        <!-- BAKERY PRODUCT GRID SECTION (3-COLUMN RESPONSIVE LAYOUT) -->
+        <!-- ============================================================== -->
+        <section class="bakery-showcase-section" id="bakery-catalog">
+            <div class="bakery-section-header">
+                <div>
+                    <h2 class="bakery-section-title">Fresh From Our Oven</h2>
+                    <p class="bakery-section-sub">Baked in small batches every sunrise using heritage grains and natural butter.</p>
+                </div>
+                <div class="bakery-filter-tabs">
+                    <span class="tab-chip active">All Bakes</span>
+                    <span class="tab-chip">Brioche</span>
+                    <span class="tab-chip">Bundt Rings</span>
+                    <span class="tab-chip">Choux</span>
+                </div>
+            </div>
+
+            <!-- 3-Column Bakery Product Grid -->
+            <div class="bakery-grid">
+                
+                <!-- Card 1: Topan Virtles -->
+                <div class="bakery-card" data-bake="Topan Virtles">
+                    <div class="bakery-card-media media-blush">
+                        <div class="bakery-plate-wrap">
+                            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Topan Virtles Bundt Ring" 
+                                 class="bakery-item-img" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="bakery-card-body">
+                        <div class="bakery-card-heading">
+                            <h3 class="bakery-item-title">Topan Virtles</h3>
+                            <span class="bakery-item-price">LKR 650.00</span>
+                        </div>
+                        <p class="bakery-item-desc">
+                            Lorm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                        </p>
+                        <div class="bakery-card-footer">
+                            <button class="bakery-card-add-btn add-to-cart-action" data-name="Topan Virtles Bundt" data-price="650.00">
+                                Add to Order +
+                            </button>
+                            <div class="card-carousel-dots">
+                                <span class="card-dot active"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-chevron">›</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Spâtues -->
+                <div class="bakery-card" data-bake="Spâtues">
+                    <div class="bakery-card-media media-peach">
+                        <div class="bakery-plate-wrap">
+                            <img src="https://images.unsplash.com/photo-1586985289688-ca3cf47d3e6e?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Spâtues Brioche Ring" 
+                                 class="bakery-item-img" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="bakery-card-body">
+                        <div class="bakery-card-heading">
+                            <h3 class="bakery-item-title">Spâtues</h3>
+                            <span class="bakery-item-price">LKR 750.00</span>
+                        </div>
+                        <p class="bakery-item-desc">
+                            Lorm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                        </p>
+                        <div class="bakery-card-footer">
+                            <button class="bakery-card-add-btn add-to-cart-action" data-name="Spâtues Brioche" data-price="750.00">
+                                Add to Order +
+                            </button>
+                            <div class="card-carousel-dots">
+                                <span class="card-dot active"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-chevron">›</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: View Menu / Artisan Choux Ring -->
+                <div class="bakery-card" data-bake="Artisan Choux Ring">
+                    <div class="bakery-card-media media-rose">
+                        <div class="bakery-plate-wrap">
+                            <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Fluted Choux Pastry Wreath" 
+                                 class="bakery-item-img" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="bakery-card-body">
+                        <div class="bakery-card-heading">
+                            <h3 class="bakery-item-title">View Menu</h3>
+                            <span class="bakery-item-price">LKR 680.00</span>
+                        </div>
+                        <p class="bakery-item-desc">
+                            Lorm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                        </p>
+                        <div class="bakery-card-footer">
+                            <button class="bakery-card-add-btn add-to-cart-action" data-name="Artisan Choux Ring" data-price="680.00">
+                                Add to Order +
+                            </button>
+                            <div class="card-carousel-dots">
+                                <span class="card-dot active"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-chevron">›</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4: Gueke Tmes -->
+                <div class="bakery-card" data-bake="Gueke Tmes">
+                    <div class="bakery-card-media media-blush-soft">
+                        <div class="bakery-plate-wrap">
+                            <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Gueke Tmes Swirl Wreath" 
+                                 class="bakery-item-img" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="bakery-card-body">
+                        <div class="bakery-card-heading">
+                            <h3 class="bakery-item-title">Gueke Tmes</h3>
+                            <span class="bakery-item-price">LKR 590.00</span>
+                        </div>
+                        <p class="bakery-item-desc">
+                            Lorm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                        </p>
+                        <div class="bakery-card-footer">
+                            <button class="bakery-card-add-btn add-to-cart-action" data-name="Gueke Tmes Pastry" data-price="590.00">
+                                Add to Order +
+                            </button>
+                            <div class="card-carousel-dots">
+                                <span class="card-dot active"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-chevron">›</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Saper Cluter -->
+                <div class="bakery-card" data-bake="Saper Cluter">
+                    <div class="bakery-card-media media-sage">
+                        <div class="bakery-plate-wrap">
+                            <img src="https://images.unsplash.com/photo-1579372786545-d24232daf58c?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Saper Cluter Sugar Ring" 
+                                 class="bakery-item-img" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="bakery-card-body">
+                        <div class="bakery-card-heading">
+                            <h3 class="bakery-item-title">Saper Cluter</h3>
+                            <span class="bakery-item-price">LKR 720.00</span>
+                        </div>
+                        <p class="bakery-item-desc">
+                            Lorm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                        </p>
+                        <div class="bakery-card-footer">
+                            <button class="bakery-card-add-btn add-to-cart-action" data-name="Saper Cluter Pastry" data-price="720.00">
+                                Add to Order +
+                            </button>
+                            <div class="card-carousel-dots">
+                                <span class="card-dot active"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-chevron">›</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6: Saper Coldes -->
+                <div class="bakery-card" data-bake="Saper Coldes">
+                    <div class="bakery-card-media media-blush-warm">
+                        <div class="bakery-plate-wrap">
+                            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Saper Coldes Golden Sponge Ring" 
+                                 class="bakery-item-img" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="bakery-card-body">
+                        <div class="bakery-card-heading">
+                            <h3 class="bakery-item-title">Saper Coldes</h3>
+                            <span class="bakery-item-price">LKR 820.00</span>
+                        </div>
+                        <p class="bakery-item-desc">
+                            Lorm ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+                        </p>
+                        <div class="bakery-card-footer">
+                            <button class="bakery-card-add-btn add-to-cart-action" data-name="Saper Coldes Sponge Ring" data-price="820.00">
+                                Add to Order +
+                            </button>
+                            <div class="card-carousel-dots">
+                                <span class="card-dot active"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-dot"></span>
+                                <span class="card-chevron">›</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="cafe-footer">
+            <div class="footer-container">
+                <div class="footer-col brand-col">
+                    <h4 class="footer-brand">LATTE LOUNGE</h4>
+                    <p>Mindful artisanal coffee & fresh hand-crafted French bakery treats baked daily.</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Hours</h5>
+                    <p>Monday - Friday: 6:00 AM – 10:00 PM</p>
+                    <p>Saturday - Sunday: 7:00 AM – 11:00 PM</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Location</h5>
+                    <p>Colombo Fort, Sri Lanka</p>
+                    <p>Old Dutch Hospital District</p>
+                </div>
+                <div class="footer-col">
+                    <h5>Connect</h5>
+                    <p>Call: (555) 789-BREW</p>
+                    <p>bakery@lattelounge.cafe</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Latte Lounge Café. Handcrafted Bakery & Premium Coffee Experience.</p>
+            </div>
+        </footer>
+
+    </div><!-- End of landing-canvas -->
+
+
+    <!-- ============================================== -->
+    <!-- FLOATING CHATBOT WIDGET (BOTTOM RIGHT CORNER) -->
+    <!-- ============================================== -->
+    
+    <!-- Floating Action Button (FAB) -->
+    <button class="chat-fab" id="chat-fab-toggle" aria-label="Open Chatbot Assistant" title="Chat with Latte Lounge Assistant">
+        <span class="fab-bubble-badge" id="fab-badge">1</span>
+        <span class="fab-pulse-ring"></span>
+        <svg class="fab-icon-chat" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <svg class="fab-icon-close" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+    </button>
+
+    <!-- Floating Chat Widget Window -->
+    <aside class="floating-chat-container chat-widget-hidden" id="chat-widget" aria-label="Latte Lounge Assistant Window">
+        <div class="chat-header">
+            <div class="header-info">
+                <div class="header-avatar">
+                    ☕
+                    <span class="online-indicator"></span>
+                </div>
+                <div class="header-text">
+                    <h3 class="bot-title">Latte Lounge Barista</h3>
+                    <p class="bot-status">Digital Barista • Online</p>
+                </div>
+            </div>
+            <div class="header-controls">
+                <button class="widget-action-icon" id="chat-cart-shortcut" title="View Current Basket" aria-label="Basket">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                </button>
+                <button class="widget-close-btn" id="chat-widget-close" aria-label="Minimize Chat Window" title="Minimize">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Chat messages scroll box -->
+        <div class="chat-box" id="chat-box">
+            <!-- Messages rendered dynamically -->
+        </div>
+
+        <!-- Interactive Quick Reply Suggestion Chips -->
+        <div class="quick-replies" id="quick-replies">
+            <button type="button" class="chip" data-query="Bakery Specials">🍰 Bakery Specials</button>
+            <button type="button" class="chip" data-query="View Menu">📋 Coffee Menu</button>
+            <button type="button" class="chip" data-query="Checkout my order">🛍️ Checkout Basket</button>
+            <button type="button" class="chip" data-query="Where is your cafe located?">📍 Location</button>
+            <button type="button" class="chip" data-query="My Loyalty Points">⭐ Loyalty Points</button>
+        </div>
+
+        <!-- Input field & Send button -->
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Ask about pastries, order treats..." autocomplete="off">
+            <button id="send-btn" aria-label="Send Message">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Notification Toast Popup -->
+    <div id="notification-popup" class="notification-hidden">
+        <span class="notification-content"></span>
+    </div>
+
+    <!-- Script connection to existing chatbot & shopping cart controller -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
